@@ -100,7 +100,7 @@
               }else if(isset($_SESSION['auth_success'])){
                 ?>
                 <p class="text-center text-white bg-success p-2 rounded">
-                  <?php echo $_SESSION['auth_success']; ?>
+                  <?php echo $_SESSION['auth_success']; unset($_SESSION['auth_success']); ?>
                 </p>
                 <?php
               }
