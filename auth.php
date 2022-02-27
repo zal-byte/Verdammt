@@ -26,7 +26,37 @@
       }
       
       }else if($_POST['request'] == 'signup'){
+        $username = HANDLER::validate($_POST, "username");
+        $name = HANDLER::validate($_POST, "name");
+        $email = HANDLER::validate($_POST,"email");
+        $password = HANDLER::validate($_POST, "password");
+        $verify_password = HANDLER::validate($_POST,"verify_password");
+    
+        $status = HANDLER::val_len( 5, array($username,$email, $password));
+        $status_1 = HANDLER::val_len( 2, array($name));
         
+        if($status[0] == true){
+          if($status_1[0] == true){
+             $data = array("username"=>$username, "name"=>$name, "email"=>$email,"password"=>$password);
+             
+             if( $verify_password == $password ){
+               $status = HANDLER::authSignup( $data );
+               if($status[0] == true){
+                 $_SESSION['auth_success'] = "Signup Successfuly.";
+                 header("location: auth.php?func=signin");
+               }else{
+                 $_SESSION['auth_error'] = $status[1];
+               }
+             }else{
+               $_SESSION['auth_error'] = "Password verify doesn't match";
+             }
+             
+          }else{
+            $_SESSION['auth_error'] = $status_1[1];
+          }
+        }else{
+          $_SESSION['auth_error'] = $status[1];
+        }
       }
     }
     
@@ -62,11 +92,17 @@
               <?php
               if(isset($_SESSION['auth_error'])){
                 ?>
-                <p class="bg-danger text-white p-2 rounded">
+                <p class="bg-danger text-center text-white p-2 rounded">
                   <?php echo $_SESSION['auth_error'];?>
                 </p>
                 <?php
                 unset($_SESSION['auth_error']);
+              }else if(isset($_SESSION['auth_success'])){
+                ?>
+                <p class="text-center text-white bg-success p-2 rounded">
+                  <?php echo $_SESSION['auth_success']; ?>
+                </p>
+                <?php
               }
               ?>
               <p class="text-center">Doesn't have any account?, <a class="text-success" href="auth.php?func=signup" style="text-decoration:none;">Signup</a>.</p>
@@ -92,6 +128,16 @@
                   <hr>
                   <button style="width:100%;" type="submit" class="btn btn-block btn-success text-white">Register</button>
                 </form>
+                <?php
+                  if(isset($_SESSION['auth_error'])){
+                    ?>
+                    <p class="bg-danger text-center text-white p-2 rounded">
+                      <?php echo $_SESSION['auth_error'];?>
+                    </p>
+                    <?php
+                    unset($_SESSION['auth_error']);
+                  }
+              ?>
                 <p class="text-center">
                   Already have an account ?, <a href="auth.php?func=signin" style="text-decoration:none;">Login</a>.
                 </p>

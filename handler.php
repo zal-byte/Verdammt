@@ -21,6 +21,45 @@ class HANDLER implements query{
   }
   
   #User HANDLER
+  
+  private static function checkUser( $username ){
+    
+    $prepare = self::prepare( HANDLER::checkUser, array('username'=>$username));
+    
+    if( $prepare ){
+      if( $prepare->rowCount() > 0){
+        return true;
+      }else{
+        return false;
+      }
+    }else{
+      die("Error");
+    }
+    
+  }
+  
+  
+  public static function authSignup( $post ){
+    
+    $username = $post["username"];
+    $password = $post["password"];
+    $name = $post["name"];
+    $email = $post["email"];
+    
+    $param = array("username"=>$username, "email"=>$email, "name"=>$name, "password"=>md5($password));
+    
+    if( self::checkUser($username) != true ){
+      $prepare = self::prepare( self::authSignup, $param );
+      if( $prepare ){
+        return [true, "Signup Successfuly"];
+      }else{
+        return [false, "Couldn't execute the query"];
+      }
+    }else{
+      return [false, $username . ", Already exists."];
+    }
+  }
+  
   public static function authLogin( $username, $password ){
     $prepare = self::prepare( HANDLER::authLogin, array("username"=>$username));
     
