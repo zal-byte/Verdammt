@@ -15,6 +15,8 @@
 <html>
   <head>
     <link rel="stylesheet" href="bs5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style/index.css">
+    <link rel="stylesheet" href="fa/css/all.min.css">
     <meta name="viewport" content="device-width=weight, initial-scale=1.0">
     <title>
       Verdammt
@@ -22,32 +24,11 @@
   </head>
   <body>
     
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-  <!-- Brand -->
-  <a class="navbar-brand" href="#">Logo</a>
-
-  <!-- Links -->
-  <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link 1</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link 2</a>
-    </li>
-
-    <!-- Dropdown -->
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-        Dropdown link
-      </a>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Link 1</a>
-        <a class="dropdown-item" href="#">Link 2</a>
-        <a class="dropdown-item" href="#">Link 3</a>
-      </div>
-    </li>
-  </ul>
-</nav>
+<ul class='nav-bar' style="position:fixed;margin-bottom:20px;">
+  <li class="nav-item bg-info"><a><span class="fa fa-plus-square"></span></a></li>
+  <li class="nav-item"><a><span class="fa fa-user"></span></a></li>
+  <li class="nav-item right bg-danger"><a href="logout.php" ><span class="fa fa-sign-out"></span></a></li>
+</ul>
     
     <div class="container">
       <div class="card shadow-sm border-0 mt-3">
@@ -55,16 +36,15 @@
           <?php
           
           $data = json_decode($dir::get(__DIR__),1);
-          
-          
+          print_r($data)
            
           ?>
         </div>
       </div>
     </div>
     
-    <script type="text/javascript" src="bs5/js/bootstrap.min.js">
-      
-    </script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="bs5/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="fa/js/all.min.js"></script>
   </body>
 </html>

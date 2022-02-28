@@ -1,0 +1,30 @@
+.nav-bar{
+  list-style-type: none;
+  bottom: 0;
+  width: 100%;
+  padding: 0;
+  background-color: #333;
+  color: white;
+}
+.nav-item{
+  float: left;
+}
+.nav-item a{
+  display: block;
+  color: white;
+  padding: 14px 16px;
+  text-align: center;
+  text-decoration: none;
+  
+}
+
+.left{
+  float: left;
+}
+.right{
+  float: right;
+}
+
+.nav-item a:hover{
+  background-color: #111;
+}
