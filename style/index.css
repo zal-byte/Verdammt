@@ -1,6 +1,6 @@
 .nav-bar{
   list-style-type: none;
-  bottom: 0;
+  top: 0;
   width: 100%;
   padding: 0;
   background-color: #333;
@@ -15,7 +15,6 @@
   padding: 14px 16px;
   text-align: center;
   text-decoration: none;
-  
 }
 
 .left{
@@ -27,4 +26,8 @@
 
 .nav-item a:hover{
   background-color: #111;
+}
+
+#body_res{
+  margin-top: 40px;
 }
