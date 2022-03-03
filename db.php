@@ -2,9 +2,9 @@
 
 class DB{
   private static $instance = null;
-  private static $host = "127.0.0.1";
+  private static $host = "localhost";
   private static $username = "root";
-  private static $password = "root";
+  private static $password = "";
   private static $dbname = "verdammt";
   
   public static function getInstance(){

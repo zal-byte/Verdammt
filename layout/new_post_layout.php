@@ -24,7 +24,7 @@
     $.ajax({
       type:'POST',
       data:param,
-      url:'http://localhost:8080/verdammt/post.php',
+      url:'http://localhost/verdammt/post.php',
       success:function(res){
         var json = JSON.parse(res)[0];
         if( json.status == true ){

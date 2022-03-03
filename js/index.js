@@ -14,7 +14,7 @@ function postLike(post_id, my_username){
   var param = '?request=postLike&post_id=' +post_id+ '&my_username=' + my_username;
   $.ajax({
     type:'GET',
-    url:'http://localhost:8080/verdammt/post.php' + param,
+    url:'http://localhost/verdammt/post.php' + param,
     success:function(res){
       var json = JSON.parse(res);
       
@@ -39,7 +39,7 @@ function getPost(){
   $.ajax({
     type:'GET',
     header:header,
-    url:'http://localhost:8080/verdammt/post.php?request=getPost&page=' + page + '&limit=' + limit,
+    url:'http://localhost/verdammt/post.php?request=getPost&page=' + page + '&limit=' + limit,
     success: function( result )
     {
       $("#body-response").html(result);
